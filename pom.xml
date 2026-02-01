@@ -6,7 +6,34 @@
 
     <groupId>de.kingsword</groupId>
     <artifactId>Energy-API</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
+    <packaging>jar</packaging>
+
+    <name>Energy-API</name>
+    <description>Energy API for Hytale modding</description>
+    <url>https://github.com/KingSwordHD/Energy-API</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>KingSwordHD</id>
+            <name>KingSwordHD</name>
+            <url>https://github.com/KingSwordHD</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/KingSwordHD/Energy-API</url>
+        <connection>scm:git:https://github.com/KingSwordHD/Energy-API.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/KingSwordHD/Energy-API.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>
@@ -14,12 +41,37 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/kingsword/Energy-API</url>
-        </repository>
-    </distributionManagement>
+    <build>
+        <plugins>
+            <!-- Sources JAR (für IDE-Support bei Nutzern) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Javadoc JAR (optional, aber sauber) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
