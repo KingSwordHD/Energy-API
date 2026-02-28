@@ -1,6 +1,9 @@
 package de.kingsword.energy_api.capability;
 
 public interface EnergyConductor extends EnergyCapability {
-    int getTransferRate();
+    /*
+     max transfer rate for this cable
+     */
+    long getTransferRate();
     void setTransferRate(int transferRate);
 }

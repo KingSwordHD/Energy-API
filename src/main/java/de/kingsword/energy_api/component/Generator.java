@@ -7,32 +7,57 @@ public class Generator implements EnergyProducer, EnergyStorage {
     private int storedEnergy = 0;
     private int capacity = 10000;
     @Override
-    public int produceEnergy(int amount) {
+    public long produceEnergy(int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        if (storedEnergy + amount <= capacity) {
+            storedEnergy += amount;
+            return amount;
+        }
+        storedEnergy = capacity;
         return 0;
     }
 
     @Override
-    public int getStoredEnergy() {
-        return 0;
+    public long getStoredEnergy() {
+        return storedEnergy;
     }
 
     @Override
-    public void storeEnergy(int amount) {
-
+    public long storeEnergy(int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        if (storedEnergy + amount <= capacity) {
+            storedEnergy += amount;
+            return amount;
+        }
+        storedEnergy = capacity;
+        return amount;
     }
 
     @Override
-    public int retrieveEnergy(int amount) {
-        return 0;
+    public long retrieveEnergy(int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        if (storedEnergy - amount >= 0) {
+            return amount;
+        }
+        return storedEnergy;
     }
 
     @Override
     public void setCapacity(int capacity) {
-
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Capacity must be positive");
+        }
+        this.capacity = capacity;
     }
 
     @Override
-    public int getCapacity() {
-        return 0;
+    public long getCapacity() {
+        return capacity;
     }
 }
